@@ -12,8 +12,8 @@ const handler= NextAuth({
     // OAuth authentication providers...
     // login with github 
     GitHubProvider({
-      clientId:process.env.clientId ,
-      clientSecret:process.env.clientSecret,
+      clientId:process.env.GITHUB_ID,
+      clientSecret:process.env.GITHUB_SECRET,
       }),
    ],
 

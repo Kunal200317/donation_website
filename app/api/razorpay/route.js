@@ -29,7 +29,7 @@ export async function POST(req, res) {
     //update the payment
     if(verified){
         const updatedPayment = await Payment.findOneAndUpdate({oid : body.razorpay_order_id},{done:"true"}, {new: true})
-        return NextResponse.redirect(`http://localhost:3000/${updatedPayment.to_user}?paymentdone=true`)
+        return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/${updatedPayment.to_user}?paymentdone=true`)
     }
     else{
         return NextResponse.json({success: false , message:"Payment varification successful"})
