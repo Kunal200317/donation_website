@@ -5,18 +5,18 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next startnpm ",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "dotenv": "^16.5.0",
     "framer-motion": "^11.15.0",
     "mongoose": "^8.9.2",
-    "next": "^15.5.12",
+    "next": "16.1.6",
     "next-auth": "^4.24.11",
     "razorpay": "^2.9.5",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
     "react-toastify": "^11.0.2"
   },
   "devDependencies": {
