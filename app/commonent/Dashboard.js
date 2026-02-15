@@ -13,58 +13,63 @@ const Dashboard = () => {
 
   const handleChange = (e) => {
     setform({ ...form, [e.target.name]: e.target.value })
-  
+
   }
 
-  const { data: session, update } = useSession()
+  const { data: session, status } = useSession()
   // this code use when user is not login hes go to the login page 
   const router = useRouter()
 
 
 
   useEffect(() => {
-    getData()
+    if (status === 'loading') return;
+
     if (!session) {
       router.push('/login')
+    } else {
+      getData()
     }
-  }, [])
+  }, [session, status])
 
   const getData = async () => {
-    let u = await fetchuser(session.user.name)
-    setform(u)
+    if (session?.user?.name) {
+      let u = await fetchuser(session.user.name)
+      setform(u)
+    }
   }
 
   const submitaction = async (data) => {
     await updateprofile(data, session.user.name)
-      toast('profile update succesfully', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-          });
+    toast('profile update succesfully', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
   }
 
 
   return (
-    <> 
-    <ToastContainer
-      position="top-right"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick={false}
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="light"
-      transition={Bounce}
-    />
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       <div className='pt-8'>
         <div className=' md:w-1/2 w-5/6 mx-auto p-5 bg-gray-900 rounded-md'>
           <h1 className='text-white text-center font-bold text-2xl'>Wellcom to your Dashboard</h1>
