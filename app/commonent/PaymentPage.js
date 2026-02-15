@@ -130,7 +130,7 @@ const PaymentPage = ({ username }) => {
           <div className='object-cover object-center w-full md:h-[350px] bg-gradient-to-r from-gray-800 to-gray-900'></div>
         )}
         
-        <div className="profile md:h-[120px] md:w-[120px] h-[70px] w-[70px] md:left-[46%] left-[40%] bottom-[-50] absolute">
+        <div className="profile md:h-[120px] md:w-[120px] h-[70px] w-[70px] md:left-[46%] left-[40%] bottom-[-50px] absolute">
           {/* ✅ FIXED: Check if profilepicture exists */}
           {currentuser.profilepicture && currentuser.profilepicture.trim() !== "" ? (
             <img 
